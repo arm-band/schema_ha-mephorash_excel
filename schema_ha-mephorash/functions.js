@@ -79,7 +79,8 @@ module.exports = {
                     else val[colIndex] = cell.w
                 }
             }
-            const catArray = functions.delimiterBreak(val[4], ",") //カンマ区切り分解
+            let catArray = []
+            if(typeof val[4] !== 'null' && typeof val[4] !== 'undefined' && val[4].length > 0) catArray = functions.delimiterBreak(val[4], ",") //カンマ区切り分解
             arrayDist.push({
                 "name": val[0],
                 "kana": val[1],
