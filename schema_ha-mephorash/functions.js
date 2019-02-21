@@ -50,12 +50,13 @@ module.exports = {
             return String.fromCharCode(chr)
         })
     },
-    targetLost: (url) => { //URLが404だった場合は空文字列、そうでない場合はURLをそのまま返す
+    urlSet: (url) => { //URLが404だった場合は空文字列、そうでない場合はURLをそのまま返す
         if(url === '404') {
             return ''
         }
         else {
-            return url
+            if(/^http(s)?:\/\/(.)+$/gi.test(url)) return url //最初からついている場合はそのまま返す
+            else return `http://${url}` //頭が「http://」または「https://」開始でない場合は、「http://」を付与
         }
     },
     mainLoop: (dataExcel, arrayDist, argv, functions) => { //ループ
@@ -84,7 +85,7 @@ module.exports = {
             arrayDist.push({
                 "name": val[0],
                 "kana": val[1],
-                "url": functions.targetLost(val[2]),
+                "url": functions.urlSet(val[2]),
                 "gyou": functions.kana2Hira(val[3]),
                 "category": catArray
             })
