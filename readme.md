@@ -6,6 +6,17 @@
 
 指定されたフォーマットのExcelファイルからjsonファイルを生成するスクリプトです。
 
+## Using
+
+使い方は以下の通りです
+
+1. リポジトリを`git clone`
+2. `npm i -D`
+3. jsonファイルに変換したいExcelファイルを`src/`ディレクトリに保存
+4. `npm start <Excel Filename> <Sheet Name>`
+    - 例: `npm start shemhamephorash.xlsx data`
+    - `dist/`ディレクトリにファイル`data.json`が作成されます
+
 ## Origin of name
 
 名前はシェムハメフォラシュ(Shemhamephorash)の72の天使から。
